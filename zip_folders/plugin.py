@@ -28,7 +28,7 @@ class ZipFoldersPlugin(BasePlugin):
         folders = self.config['folders']
 
         for folder in folders:
-            path = os.path.join(config['docs_dir'], folder)
+            path = os.path.join(config['site_dir'], folder)
             if not os.path.exists(path):
                 print(f"The folder {folder} does not exist.")
                 continue
