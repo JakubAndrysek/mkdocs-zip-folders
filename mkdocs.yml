@@ -1,0 +1,101 @@
+site_name: MkDocs - TypeDoc Plugin
+site_url: https://zip-folders.kubaandrysek.cz/
+site_author: Jakub Andrýsek
+site_description: >-
+  MkDocs plugin to zip configured folders and add them to the site.
+
+# Repository
+repo_name: JakubAndrysek/mkdocs-zip-folders
+repo_url: https://github.com/JakubAndrysek/mkdocs-zip-folders
+edit_uri: edit/main/docs/
+
+use_directory_urls: True
+
+# Copyright
+copyright: Copyright © 2023 Jakub Andrýsek
+
+theme:
+  name: material
+  language: en
+  logo: assets/logo.png
+  favicon: assets/logo.png
+  features:
+    - navigation.tabs
+    - navigation.indexes
+    - navigation.top
+    - content.action.edit
+    - content.action.view
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.expand
+  icon:
+    repo: fontawesome/brands/github
+
+
+  palette:
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: teal
+      accent: teal
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: teal
+      accent: teal
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/JakubAndrysek
+    - icon: fontawesome/brands/twitter
+      link: https://twitter.com/KubaAndrysek
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/in/jakub-andrysek/
+  analytics:
+    provider: google
+#    property: G-
+    feedback:
+      title: Was this page helpful?
+      ratings:
+        - icon: material/emoticon-happy-outline
+          name: This page was helpful
+          data: 1
+          note: >-
+            Thanks for your feedback!
+        - icon: material/emoticon-sad-outline
+          name: This page could be improved
+          data: 0
+          note: >-
+            Thanks for your feedback!
+
+plugins:
+  - search
+  - open-in-new-tab
+  - glightbox
+  - zip_folders:
+      folders:
+        - myCode
+        - toShare
+        - inFolder/zipInFolder
+      # debug: true
+
+
+markdown_extensions:
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - attr_list
+
+nav:
+  - Home: 'README.md'
+  - TypeDoc API: '/typedocApi'
