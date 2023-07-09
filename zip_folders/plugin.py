@@ -57,14 +57,12 @@ class ZipFoldersPlugin(BasePlugin):
 
     @staticmethod
     def zip_folder(folder, debug=False):
-        # Use os.path.basename to include the root directory in the zip file
-        root_dir = os.path.basename(folder)
         zipf = zipfile.ZipFile(f'{folder}.zip', 'w', zipfile.ZIP_DEFLATED)
         for dirpath, dirnames, filenames in os.walk(folder):
             for filename in filenames:
                 # Create the file path relative to the root directory
-                relpath = os.path.relpath(dirpath, os.path.dirname(folder))
-                zipf.write(os.path.join(dirpath, filename), arcname=os.path.join(root_dir, relpath, filename))
+                relpath = os.path.relpath(dirpath, folder)  # remove os.path.dirname
+                zipf.write(os.path.join(dirpath, filename), arcname=os.path.join(relpath, filename))
         zipf.close()
 
         if debug:
