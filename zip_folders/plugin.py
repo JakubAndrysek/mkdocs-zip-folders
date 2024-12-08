@@ -43,7 +43,7 @@ class ZipFoldersPlugin(BasePlugin):
         for folder in folders:
             path = os.path.join(config['site_dir'], folder)
             if not os.path.exists(path):
-                print(f"The folder {folder} does not exist.")
+                log.warning(f"The folder {folder} does not exist.")
                 continue
 
             zip_path = f'{path}.zip'
