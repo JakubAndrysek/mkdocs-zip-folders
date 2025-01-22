@@ -17,6 +17,11 @@ from mkdocs.structure.files import File
 log: logging.Logger = logging.getLogger("mkdocs")
 
 
+class PlaceholderFile(File):
+    def copy_file(self, *args, **kwargs):
+        pass
+
+
 class ZipFoldersPlugin(BasePlugin):
     config_scheme = (
         ('folders', config_options.Type(list, default=[])),
@@ -24,13 +29,21 @@ class ZipFoldersPlugin(BasePlugin):
         ('hash_extension', config_options.Type(str, default='.zip.hash')),
     )
 
+    def on_files(self, files, config):
+        folders = self.config['folders']
+
+        for folder in folders:
+            files.append(PlaceholderFile.generated(
+                config, f'{folder}.zip', abs_src_path=os.path.join(config['site_dir'], f'{folder}.zip')
+            ))
+
     def on_post_build(self, config):
         folders = self.config['folders']
 
         for folder in folders:
             path = os.path.join(config['site_dir'], folder)
             if not os.path.exists(path):
-                print(f"The folder {folder} does not exist.")
+                log.warning(f"The folder {folder} does not exist.")
                 continue
 
             zip_path = f'{path}.zip'
