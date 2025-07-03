@@ -1,4 +1,4 @@
-site_name: MkDocs - TypeDoc Plugin
+site_name: MkDocs - Zip Folders
 site_url: https://zip-folders.kubaandrysek.cz/
 site_author: Jakub Andrýsek
 site_description: >-
@@ -12,7 +12,7 @@ edit_uri: edit/main/docs/
 use_directory_urls: True
 
 # Copyright
-copyright: Copyright © 2023 Jakub Andrýsek
+copyright: Copyright © Jakub Andrýsek
 
 theme:
   name: material
@@ -85,6 +85,9 @@ plugins:
         - myCode
         - toShare
         - inFolder/zipInFolder
+      formats:
+        - zip
+        - tar.gz
       # debug: true
 
 
@@ -98,4 +101,3 @@ markdown_extensions:
 
 nav:
   - Home: 'README.md'
-  - TypeDoc API: '/typedocApi'
